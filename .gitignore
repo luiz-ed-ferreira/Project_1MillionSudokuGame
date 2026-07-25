@@ -1,0 +1,28 @@
+# Ambiente virtual
+.venv_sudoku/
+
+# Dataset
+Dataset/
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+
+# TensorFlow
+checkpoints/
+logs/
+*.ckpt
+*.pb
+*.h5
+*.keras
+
+# Jupyter
+.ipynb_checkpoints/
+
+# VS Code
+.vscode/
+
+# Sistema
+.DS_Store
+Thumbs.db
