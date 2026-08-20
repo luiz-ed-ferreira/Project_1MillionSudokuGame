@@ -1,3 +1,3 @@
 #Copy file
 #Please acess main.ipynb for the complete code.
-print("Hello World")
+print("Please acess main.ipynb for the complete code.")
