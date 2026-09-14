@@ -1,15 +1,15 @@
-# Ambiente virtual
+#Environment
 .venv_sudoku/
 
-# Dataset
-Dataset/
+#Datasets
+data/
 
-# Python
+#Python
 __pycache__/
 *.pyc
 *.pyo
 
-# TensorFlow
+#TensorFlow
 checkpoints/
 logs/
 *.ckpt
@@ -17,12 +17,9 @@ logs/
 *.h5
 *.keras
 
-# Jupyter
+#Jupyter
 .ipynb_checkpoints/
 
-# VS Code
-.vscode/
-
-# Sistema
+#System
 .DS_Store
 Thumbs.db
