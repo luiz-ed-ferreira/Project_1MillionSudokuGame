@@ -1,4 +1,4 @@
-# Project One Million Sudoku Game - Kaggle dataset
+# Project One Million Sudoku Game - Kaggle Dataset
 
 ### Project overview
 
