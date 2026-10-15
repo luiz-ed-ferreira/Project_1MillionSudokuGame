@@ -9,17 +9,5 @@ __pycache__/
 *.pyc
 *.pyo
 
-#TensorFlow
-checkpoints/
-logs/
-*.ckpt
-*.pb
-*.h5
-*.keras
-
 #Jupyter
 .ipynb_checkpoints/
-
-#System
-.DS_Store
-Thumbs.db
