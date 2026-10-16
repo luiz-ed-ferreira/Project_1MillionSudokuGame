@@ -17,7 +17,7 @@ In progress
 - [x] Project Setup: Organize the repository using Cookiecutter and configure the development environment.
 - [x] GitHub & Databricks Integration: Connect the GitHub repository to Databricks Free Edition.
 - [x] Data Ingestion: Import the Kaggle dataset using PySpark and create the Bronze layer.
-- [ ] Data Cleaning & Validation: Handle data quality issues and create the Silver layer.
+- [x] Data Cleaning & Validation: Handle data quality issues and create the Silver layer.
 - [ ] Exploratory Data Analysis (EDA): Analyze Sudoku patterns, distributions, and dataset characteristics.
 - [ ] Feature Engineering: Extract relevant features and create the Gold layer.
 - [ ] Target Generation: Implement a Sudoku solver to generate complexity metrics for supervised learning.
@@ -25,6 +25,12 @@ In progress
 - [ ] Model Evaluation: Evaluate performance using MAE, RMSE, and R².
 - [ ] MLOps & Experiment Tracking: Track experiments and manage models using MLflow.
 - [ ] Pipeline Automation: Configure and execute workflows using Databricks Jobs, subject to Free Edition limitations.
+
+### Data Quality
+
+The dataset contains 1,000,000 Sudoku puzzles. All records passed structural, consistency, duplicate, and mathematical solution validation checks.
+
+For the complete validation methodology and results, see [Data Quality Documentation](docs/data-quality.md).
 
 ### Project Architecture
 
@@ -46,13 +52,16 @@ Project_1MillionSudokuGame/
 │   │   ├── getting-started.md
 │   │   └── index.md
 │   ├── .gitkeep
+│   ├── data-quality.md
 │   └── mkdocs.yml
 │
 ├── models/
 │   └── .gitkeep
 │
 ├── notebooks/
-│   └── .gitkeep
+│   ├── 01_environment_validation.ipynb
+│   ├── 02_bronze_ingestion.ipynb
+│   └── 03_silver_validation.ipynb
 │
 ├── references/
 │   └── .gitkeep
@@ -60,6 +69,7 @@ Project_1MillionSudokuGame/
 ├── reports/
 │   ├── figures/
 │   │   └── .gitkeep
+|   ├── query_sudoku_bronze_raw_games.sql
 │   └── .gitkeep
 │
 ├── sudoku_intelligence/
