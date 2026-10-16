@@ -26,6 +26,74 @@ In progress
 - [ ] MLOps & Experiment Tracking: Track experiments and manage models using MLflow.
 - [ ] Pipeline Automation: Configure and execute workflows using Databricks Jobs, subject to Free Edition limitations.
 
+### Project Architecture
+
+```text
+Project_1MillionSudokuGame/
+│
+├── data/
+│   ├── external/
+│   │   └── .gitkeep
+│   ├── interim/
+│   │   └── .gitkeep
+│   ├── processed/
+│   │   └── .gitkeep
+│   └── raw/
+│       └── .gitkeep
+│
+├── docs/
+│   ├── docs/
+│   │   ├── getting-started.md
+│   │   └── index.md
+│   ├── .gitkeep
+│   └── mkdocs.yml
+│
+├── models/
+│   └── .gitkeep
+│
+├── notebooks/
+│   └── .gitkeep
+│
+├── references/
+│   └── .gitkeep
+│
+├── reports/
+│   ├── figures/
+│   │   └── .gitkeep
+│   └── .gitkeep
+│
+├── sudoku_intelligence/
+│   ├── modeling/
+│   │   ├── __init__.py
+│   │   ├── predict.py
+│   │   └── train.py
+│   ├── __init__.py
+│   ├── config.py
+│   ├── dataset.py
+│   ├── features.py
+│   └── plots.py
+│
+├── .gitignore
+├── Makefile
+├── pyproject.toml
+├── README.md
+└── requirements.txt
+```
+
+### Directory Overview
+
+| Directory | Description |
+|---|---|
+| `data/` | Data storage structure for raw, external, intermediate, and processed datasets. |
+| `docs/` | Technical documentation managed with MkDocs. |
+| `models/` | Directory reserved for trained model artifacts. |
+| `notebooks/` | Jupyter notebooks for EDA, feature engineering, and experimentation. |
+| `references/` | Reference materials and supporting documentation. |
+| `reports/` | Generated reports, visualizations, and project results. |
+| `sudoku_intelligence/` | Main Python package containing data processing, feature engineering, modeling, and visualization modules. |
+
+**Note:** Datasets, virtual environments, credentials, and generated model artifacts are excluded from Git version control through `.gitignore`. Only the directory structure and project source files are maintained in the repository.
+
 ### Prerequisites & used softwares
 
 - WSL Linux/Ubuntu for Windows 11 System

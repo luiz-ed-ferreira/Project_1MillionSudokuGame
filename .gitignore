@@ -1,13 +1,46 @@
-#Environment
+#Virtual environments
+.venv/
 .venv_sudoku/
-
-#Datasets
-data/
+venv/
 
 #Python
 __pycache__/
-*.pyc
-*.pyo
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.ruff_cache/
+build/
+dist/
 
-#Jupyter
+#Jupyter Notebooks
 .ipynb_checkpoints/
+
+#Datasets
+data/raw/*
+data/interim/*
+data/processed/*
+data/external/*
+data/sudoku.csv
+
+#Preserve data directory structure
+!data/raw/.gitkeep
+!data/interim/.gitkeep
+!data/processed/.gitkeep
+!data/external/.gitkeep
+
+#Environment variables and credentials
+.env
+.env.*
+!.env.example
+.databrickscfg
+
+#Machine Learning artifacts
+models/*
+!models/.gitkeep
+mlruns/
+mlartifacts/
+
+#IDE and OS
+.vscode/
+.idea/
+.DS_Store

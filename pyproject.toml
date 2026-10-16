@@ -1,0 +1,106 @@
+
+#============================================================
+#Project: 1 Million Sudoku Games
+#Description: Data Engineering and Machine Learning with PySpark, Databricks, and MLflow
+#============================================================
+
+
+#------------------------------------------------------------
+#Build System
+#------------------------------------------------------------
+#Defines the build backend used to package the project.
+#Flit is a lightweight tool for building Python packages.
+
+[build-system]
+requires = ["flit_core>=3.2,<4"]
+build-backend = "flit_core.buildapi"
+
+
+#------------------------------------------------------------
+#Project Metadata
+#------------------------------------------------------------
+#Defines package identification, author, description and supported Python versions.
+
+[project]
+name = "sudoku_intelligence"
+version = "0.0.1"
+description = "Sudoku complexity prediction using PySpark and Databricks"
+
+authors = [
+    { name = "luiz-ed-ferreira" },
+]
+
+readme = "README.md"
+
+#Python compatibility range.
+#The local development environment currently uses Python 3.12.3.
+#Databricks Runtime compatibility must be verified separately.
+requires-python = ">=3.10,<3.14"
+
+#------------------------------------------------------------
+#Core Dependencies
+#------------------------------------------------------------
+#Libraries required for data processing, analysis, machine learning, and experiment tracking.
+
+dependencies = [
+    "numpy",       #Numerical computing and array operations
+    "pandas",      #Data analysis and tabular manipulation
+    "pyarrow",     #Efficient columnar data and Spark interoperability
+    "pyspark",     #Distributed processing and Spark MLlib
+    "mlflow",      #Experiment tracking and model lifecycle management
+]
+
+#------------------------------------------------------------
+#Optional Dependencies
+#------------------------------------------------------------
+#Development and documentation tools are separated from the core dependencies to keep the project modular.
+
+[project.optional-dependencies]
+
+#Development tools for code quality, testing, and notebooks.
+dev = [
+    "ruff",        #Python linting, formatting, and import sorting
+    "pytest",      #Automated unit testing
+    "ipykernel",   #Jupyter kernel support for the virtual environment
+]
+
+#Documentation tools for generating a technical website.
+docs = [
+    "mkdocs",          # Static documentation site generator
+    "mkdocs-material", # Material Design theme for MkDocs
+]
+
+#------------------------------------------------------------
+#Ruff Configuration
+#------------------------------------------------------------
+#Ruff enforces consistent Python code style and quality.
+#The source directory contains the main project package.
+
+[tool.ruff]
+line-length = 99
+target-version = "py312"
+
+src = ["sudoku_intelligence"]
+
+#Include Python source files and the project configuration.
+include = [
+    "pyproject.toml",
+    "sudoku_intelligence/**/*.py",
+]
+
+#------------------------------------------------------------
+#Ruff Linting Rules
+# ------------------------------------------------------------
+#Enable the default linting rules and extend them with import sorting checks (I).
+
+[tool.ruff.lint]
+extend-select = ["I"]
+
+#------------------------------------------------------------
+#Ruff Import Sorting
+#------------------------------------------------------------
+#Treat the project package as first-party code and maintain consistent import ordering across modules.
+
+[tool.ruff.lint.isort]
+known-first-party = ["sudoku_intelligence"]
+force-sort-within-sections = true
