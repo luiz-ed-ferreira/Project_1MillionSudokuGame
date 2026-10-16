@@ -16,7 +16,7 @@ In progress
 
 - [x] Project Setup: Organize the repository using Cookiecutter and configure the development environment.
 - [x] GitHub & Databricks Integration: Connect the GitHub repository to Databricks Free Edition.
-- [ ] Data Ingestion: Import the Kaggle dataset using PySpark and create the Bronze layer.
+- [x] Data Ingestion: Import the Kaggle dataset using PySpark and create the Bronze layer.
 - [ ] Data Cleaning & Validation: Handle data quality issues and create the Silver layer.
 - [ ] Exploratory Data Analysis (EDA): Analyze Sudoku patterns, distributions, and dataset characteristics.
 - [ ] Feature Engineering: Extract relevant features and create the Gold layer.
