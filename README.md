@@ -18,8 +18,8 @@ In progress
 - [x] **GitHub & Databricks Integration:** Connect the GitHub repository to Databricks Free Edition.
 - [x] **Data Ingestion:** Import the Kaggle dataset using PySpark and create the Bronze layer.
 - [x] **Data Cleaning & Validation:** Perform structural and mathematical Sudoku validation and create the Silver layer.
-- [ ] **Exploratory Data Analysis (EDA):** Analyze Sudoku patterns, distributions, and dataset characteristics.
-- [ ] **Feature Engineering:** Extract relevant puzzle features and create the Gold layer.
+- [x] **Exploratory Data Analysis (EDA):** Analyze Sudoku patterns, distributions, and dataset characteristics.
+- [x] **Feature Engineering:** Extract relevant puzzle features and create the Gold layer.
 - [ ] **Target Generation:** Implement a Sudoku solver to generate complexity metrics and difficulty labels for supervised learning.
 - [ ] **Regression Modeling:** Train and compare regression models to predict Sudoku solving complexity using Spark MLlib.
 - [ ] **Classification Modeling:** Train and compare classification models to predict Sudoku difficulty levels (Easy, Medium, Hard) using Spark MLlib.
@@ -34,6 +34,18 @@ In progress
 The dataset contains 1,000,000 Sudoku puzzles. All records passed structural, consistency, duplicate, and mathematical solution validation checks.
 
 For the complete validation methodology and results, see [Data Quality Documentation](docs/data-quality.md).
+
+### Gold Layer — Feature Engineering
+
+The Gold Layer has been successfully implemented using PySpark and Delta Lake.
+
+- Processed 1,000,000 validated Sudoku puzzles.
+- Engineered 7 numerical features describing puzzle structure and candidate availability.
+- Analyzed clue distribution across rows, columns, and 3x3 boxes.
+- Implemented candidate analysis using native Spark SQL functions.
+- Validated all features with zero null values and zero invalid records.
+- Cross-validated candidate-based calculations against a Python reference implementation.
+- Persisted the final dataset in `workspace.sudoku_gold.game_features`.
 
 ### Project Architecture
 
