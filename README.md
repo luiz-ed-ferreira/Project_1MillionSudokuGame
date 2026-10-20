@@ -14,17 +14,20 @@
 
 In progress
 
-- [x] Project Setup: Organize the repository using Cookiecutter and configure the development environment.
-- [x] GitHub & Databricks Integration: Connect the GitHub repository to Databricks Free Edition.
-- [x] Data Ingestion: Import the Kaggle dataset using PySpark and create the Bronze layer.
-- [x] Data Cleaning & Validation: Handle data quality issues and create the Silver layer.
-- [ ] Exploratory Data Analysis (EDA): Analyze Sudoku patterns, distributions, and dataset characteristics.
-- [ ] Feature Engineering: Extract relevant features and create the Gold layer.
-- [ ] Target Generation: Implement a Sudoku solver to generate complexity metrics for supervised learning.
-- [ ] Machine Learning: Train and compare regression models using Spark MLlib.
-- [ ] Model Evaluation: Evaluate performance using MAE, RMSE, and R².
-- [ ] MLOps & Experiment Tracking: Track experiments and manage models using MLflow.
-- [ ] Pipeline Automation: Configure and execute workflows using Databricks Jobs, subject to Free Edition limitations.
+- [x] **Project Setup:** Organize the repository using Cookiecutter and configure the development environment.
+- [x] **GitHub & Databricks Integration:** Connect the GitHub repository to Databricks Free Edition.
+- [x] **Data Ingestion:** Import the Kaggle dataset using PySpark and create the Bronze layer.
+- [x] **Data Cleaning & Validation:** Perform structural and mathematical Sudoku validation and create the Silver layer.
+- [ ] **Exploratory Data Analysis (EDA):** Analyze Sudoku patterns, distributions, and dataset characteristics.
+- [ ] **Feature Engineering:** Extract relevant puzzle features and create the Gold layer.
+- [ ] **Target Generation:** Implement a Sudoku solver to generate complexity metrics and difficulty labels for supervised learning.
+- [ ] **Regression Modeling:** Train and compare regression models to predict Sudoku solving complexity using Spark MLlib.
+- [ ] **Classification Modeling:** Train and compare classification models to predict Sudoku difficulty levels (Easy, Medium, Hard) using Spark MLlib.
+- [ ] **Regression Evaluation:** Evaluate models using MAE, RMSE, and R².
+- [ ] **Classification Evaluation:** Evaluate models using Accuracy, Precision, Recall, F1-score, and Confusion Matrix.
+- [ ] **Model Comparison & Selection:** Compare model performance and select the best approaches for regression and classification.
+- [ ] **MLOps & Experiment Tracking:** Track experiments, metrics, parameters, and model artifacts using MLflow.
+- [ ] **Pipeline Automation:** Configure and execute workflows using Databricks Jobs, subject to Free Edition limitations.
 
 ### Data Quality
 
@@ -61,7 +64,8 @@ Project_1MillionSudokuGame/
 ├── notebooks/
 │   ├── 01_environment_validation.ipynb
 │   ├── 02_bronze_ingestion.ipynb
-│   └── 03_silver_validation.ipynb
+│   ├── 03_silver_validation.ipynb
+│   └── 04_gold_feature_engineering
 │
 ├── references/
 │   └── .gitkeep
