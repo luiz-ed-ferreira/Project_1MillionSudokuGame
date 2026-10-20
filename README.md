@@ -65,7 +65,7 @@ Project_1MillionSudokuGame/
 │   ├── 01_environment_validation.ipynb
 │   ├── 02_bronze_ingestion.ipynb
 │   ├── 03_silver_validation.ipynb
-│   └── 04_gold_feature_engineering
+│   └── 04_gold_feature_engineering.ipynb
 │
 ├── references/
 │   └── .gitkeep
