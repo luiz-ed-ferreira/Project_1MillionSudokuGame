@@ -29,13 +29,17 @@ In progress
 - [ ] **MLOps & Experiment Tracking:** Track experiments, metrics, parameters, and model artifacts using MLflow.
 - [ ] **Pipeline Automation:** Configure and execute workflows using Databricks Jobs, subject to Free Edition limitations.
 
-### Data Quality
+### 🥉 Bronze Layer - Data Ingestion 
 
-The dataset contains 1,000,000 Sudoku puzzles. All records passed structural, consistency, duplicate, and mathematical solution validation checks.
+Ingested 1,000,000 Sudoku puzzles from the Kaggle dataset using PySpark and Databricks. The raw CSV file was uploaded to a Unity Catalog Volume and processed into a Delta Lake table (`workspace.sudoku_bronze.raw_games`), preserving the original puzzle and solution data while adding ingestion timestamps and source file metadata for traceability.
+
+### 🥈 Silver Layer - Data Cleaning & Validation
+
+The dataset contains 1,000,000 Sudoku puzzles. All records passed structural, consistency, duplicate, and mathematical solution validation checks (`workspace.sudoku_silver.validated_games`).
 
 For the complete validation methodology and results, see [Data Quality Documentation](docs/data-quality.md).
 
-### Gold Layer - Feature Engineering
+### 🥇 Gold Layer - EDA & Feature Engineering
 
 The Gold Layer has been successfully implemented using PySpark and Delta Lake.
 
