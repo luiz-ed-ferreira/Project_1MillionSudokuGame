@@ -35,12 +35,23 @@ The dataset contains 1,000,000 Sudoku puzzles. All records passed structural, co
 
 For the complete validation methodology and results, see [Data Quality Documentation](docs/data-quality.md).
 
-### Gold Layer — Feature Engineering
+### Gold Layer - Feature Engineering
 
 The Gold Layer has been successfully implemented using PySpark and Delta Lake.
 
 - Processed 1,000,000 validated Sudoku puzzles.
-- Engineered 7 numerical features describing puzzle structure and candidate availability.
+- Engineered 7 numerical features describing puzzle structure and candidate availability:
+
+| Feature | Description |
+|---|---|
+| `given_cells` | Number of initially filled cells in the Sudoku puzzle. |
+| `row_clue_std` | Population standard deviation of clue counts across the nine rows. |
+| `column_clue_std` | Population standard deviation of clue counts across the nine columns. |
+| `box_clue_std` | Population standard deviation of clue counts across the nine 3x3 boxes. |
+| `avg_candidate_count` | Average number of valid candidates per empty cell based on Sudoku constraints. |
+| `single_candidate_cells` | Number of empty cells with exactly one valid candidate (Naked Single). |
+| `max_candidate_count` | Maximum number of valid candidates among all empty cells. |
+
 - Analyzed clue distribution across rows, columns, and 3x3 boxes.
 - Implemented candidate analysis using native Spark SQL functions.
 - Validated all features with zero null values and zero invalid records.
@@ -77,7 +88,8 @@ Project_1MillionSudokuGame/
 │   ├── 01_environment_validation.ipynb
 │   ├── 02_bronze_ingestion.ipynb
 │   ├── 03_silver_validation.ipynb
-│   └── 04_gold_feature_engineering.ipynb
+│   ├── 04_gold_feature_engineering.ipynb
+│   └── 05_target_generation.ipynb
 │
 ├── references/
 │   └── .gitkeep
