@@ -20,7 +20,7 @@ In progress
 - [x] **Data Cleaning & Validation:** Perform structural and mathematical Sudoku validation and create the Silver layer.
 - [x] **Exploratory Data Analysis (EDA):** Analyze Sudoku patterns, distributions, and dataset characteristics.
 - [x] **Feature Engineering:** Extract relevant puzzle features and create the Gold layer.
-- [ ] **Target Generation:** Implement a Sudoku solver to generate complexity metrics and difficulty labels for supervised learning.
+- [ ] **Target Generation:** Develop and evaluate a Sudoku solver using increasingly advanced solving techniques to generate meaningful complexity metrics and difficulty labels for supervised learning.
 - [ ] **Regression Modeling:** Train and compare regression models to predict Sudoku solving complexity using Spark MLlib.
 - [ ] **Classification Modeling:** Train and compare classification models to predict Sudoku difficulty levels (Easy, Medium, Hard) using Spark MLlib.
 - [ ] **Regression Evaluation:** Evaluate models using MAE, RMSE, and R².
