@@ -66,18 +66,24 @@ In progress
 - Cross-validated candidate-based calculations against a Python reference implementation.
 - Persisted the final dataset in `workspace.sudoku_gold.game_features`.
 
-
 ### Target Generation & Sudoku Solver Development
 
 #### Objective
 
->The target generation stage aims to develop a reproducible, solver-based methodology for estimating Sudoku puzzle-solving complexity. Rather than relying exclusively on the number of given clues, the approach investigates algorithmic effort, candidate elimination, and search behavior to generate meaningful targets for subsequent Machine Learning models.
+>The target generation stage introduces a custom Sudoku solver to derive puzzle complexity metrics from the validated dataset..
 
 >The solver implementations are being developed incrementally, with correctness validated against the reference solutions provided by the original dataset.
 
 #### Solver Architecture
 
->The development process is organized into baseline solvers and advanced solving techniques.
+>The solver uses a candidate-based propagation strategy implemented in Python, with the following techniques:
+
+- Naked Singles: Identifies cells with only one possible candidate.
+- Hidden Singles: Identifies candidates that can occupy only one position within a row, column, or 3×3 box.
+- Naked Pairs: Eliminates candidates shared by exactly two cells within the same unit.
+- Iterative Propagation: Repeats candidate elimination and value assignment until the puzzle is solved or no further progress is possible.
+
+>A persistent candidate map is maintained during the solving process to avoid unnecessary candidate recalculation.
 
 ##### 1. Baseline Solvers
 
@@ -145,15 +151,94 @@ The solver records:
 - Candidate elimination counts must be validated for consistency before being used as target variables.
 - The final target definition will consider the distribution, reliability, and complementary information of the generated metrics.
 
-#### Next Steps
+#### Distributed Execution
 
-- Validate the Naked Pairs implementation on larger samples and verify candidate elimination consistency.
-- Compare advanced propagation results with MRV backtracking on the same puzzles.
-- Investigate additional techniques, such as Pointing Pairs and Box-Line Reduction, if needed.
-- Analyze feature correlations and the distribution of solver effort metrics.
-- Define and validate the `solving_complexity` regression target.
-- Establish a defensible strategy for generating the `difficulty_label` classification target.
-- Train and evaluate Spark MLlib models using the resulting targets.
+>The solver was integrated with Apache Spark using a Pandas UDF, enabling distributed execution across the complete dataset.
+
+- Input dataset: 1,000,000 Sudoku puzzles.
+- Execution framework: PySpark and Pandas UDF.
+- Output: Solver execution metrics for each puzzle.
+
+#### Target Definition
+
+>The primary target variable is:
+
+- `naked_pair_eliminations`: Total number of candidate eliminations performed through the Naked Pairs technique.
+
+>Additional solver metrics:
+
+- `solved`
+- `contradiction`
+- `naked_single_steps`
+- `hidden_single_steps`
+
+>The target represents an experimental measure of solver-specific complexity. It should not be interpreted as a validated measure of human Sudoku difficulty.
+
+#### Full Dataset Validation
+
+>The solver was successfully executed and validated against all 1,000,000 puzzles.
+
+| Validation Metric | Result |
+|---|---:|
+| Total puzzles | 1,000,000 |
+| Successfully solved | 1,000,000 |
+| Contradictions | 0 |
+| Null puzzles | 0 |
+| Null target metrics | 0 |
+| Distinct puzzles | 1,000,000 |
+| Solver success rate | 100% |
+
+#### Target Statistical Summary
+
+>Descriptive statistics for `naked_pair_eliminations`:
+
+| Metric | Value |
+|---|---:|
+| Mean | 12.4247 |
+| Standard deviation | 5.8935 |
+| Minimum | 0 |
+| 25th percentile | 8 |
+| Median | 12 |
+| 75th percentile | 16 |
+| Maximum | 49 |
+| Skewness | 0.4691 |
+| Kurtosis | 0.1480 |
+
+>The distribution presents a slight positive skewness, indicating a longer right tail.
+
+#### Gold Table
+
+>The solver results were persisted in Delta Lake: `workspace.sudoku_gold.solver_targets`.
+
+>This table stores the puzzle identifier and all solver execution metrics, allowing subsequent analyses and machine learning experiments without rerunning the solver.
+
+### Exploratory Data Analysis
+
+>The Exploratory Data Analysis stage consolidates the structural features generated during Gold Feature Engineering with the solver-derived target metrics. (`06_exploratory_data_analysis.ipynb`).
+
+#### Consolidated Dataset
+
+>The dataset is created by joining:
+
+- `workspace.sudoku_gold.game_features`
+- `workspace.sudoku_gold.solver_targets`
+
+>The resulting dataset contains 1,000,000 records and 11 columns.
+
+#### Variables
+
+| Category | Variables |
+|---|---|
+| Puzzle identifier | `quizzes` |
+| Structural features | `given_cells`, `row_clue_std`, `column_clue_std`, `box_clue_std` |
+| Candidate features | `avg_candidate_count`, `single_candidate_cells`, `max_candidate_count` |
+| Solver metrics | `naked_single_steps`, `hidden_single_steps`, `naked_pair_eliminations` |
+
+>The primary target for regression experiments is `naked_pair_eliminations`.
+
+>Solver-derived metrics must be treated carefully when selecting model predictors to prevent target leakage.
+
+>The EDA stage will investigate data quality, variable distributions, correlations, multicollinearity, and relationships between features and the target before model development.
 
 ### Project Architecture
 
@@ -186,7 +271,8 @@ Project_1MillionSudokuGame/
 │   ├── 02_bronze_ingestion.ipynb
 │   ├── 03_silver_validation.ipynb
 │   ├── 04_gold_feature_engineering.ipynb
-│   └── 05_target_generation.ipynb
+│   ├── 05_target_generation.ipynb
+│   └── 06_exploratory_data_analysis.ipynb
 │
 ├── references/
 │   └── .gitkeep
