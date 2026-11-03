@@ -1,6 +1,6 @@
 # Project One Million Sudoku Game - Kaggle Dataset
 
-### Project overview
+### Project Overview
 
 > An end-to-end Data Engineering and Machine Learning project leveraging Databricks, Apache Spark, PySpark, and MLflow to process and analyze a dataset containing one million Sudoku puzzles.
 
@@ -14,7 +14,7 @@
   <img src="img/sudoku_sample.webp" alt="Sudoku sample">
 </p>
 
-### Status & improvements
+### Status & Improvements
 
 In progress
 
@@ -206,7 +206,7 @@ The solver records:
 
 >The distribution presents a slight positive skewness, indicating a longer right tail.
 
-#### Gold Table
+#### Gold Table - New Metrics
 
 >The solver results were persisted in Delta Lake: `workspace.sudoku_gold.solver_targets`.
 
@@ -315,7 +315,7 @@ Project_1MillionSudokuGame/
 
 **Note:** Datasets, virtual environments, credentials, and generated model artifacts are excluded from Git version control through `.gitignore`. Only the directory structure and project source files are maintained in the repository.
 
-### Prerequisites & used softwares
+### Prerequisites & Softwares
 
 - WSL Linux/Ubuntu for Windows 11 System
 - Python version 3.12.3
