@@ -2,6 +2,11 @@
 
 ### Project Overview
 
+<p align="center">
+  <img src="img/sudoku_icon.png" alt="Sudoku sample">
+</p>
+
+
 > An end-to-end Data Engineering and Machine Learning project leveraging Databricks, Apache Spark, PySpark, and MLflow to process and analyze a dataset containing one million Sudoku puzzles.
 
 >The project aims to build a scalable data pipeline using the Medallion Architecture (Bronze, Silver, and Gold), perform exploratory data analysis (EDA), engineer relevant features, and develop Machine Learning models to predict Sudoku puzzle complexity.
@@ -9,10 +14,6 @@
 >The workflow incorporates Cookiecutter for standardized project organization, Delta Lake for reliable data management, Spark MLlib for model development, and MLflow for experiment tracking and model evaluation.
 
 >By integrating GitHub with Databricks, the project also explores reproducibility, version control, and MLOps best practices, demonstrating a complete workflow from raw data ingestion to predictive modeling.
-
-<p align="center">
-  <img src="img/sudoku_sample.webp" alt="Sudoku sample">
-</p>
 
 ### Status & Improvements
 
@@ -73,6 +74,10 @@ In progress
 >The target generation stage introduces a custom Sudoku solver to derive puzzle complexity metrics from the validated dataset..
 
 >The solver implementations are being developed incrementally, with correctness validated against the reference solutions provided by the original dataset.
+
+<p align="center">
+  <img src="img/sudoku_sample.webp" alt="Sudoku sample">
+</p>
 
 #### Solver Architecture
 
