@@ -3,7 +3,7 @@
 ### Project Overview
 
 <p align="center">
-  <img src="img/sudoku_icon.png" alt="Sudoku sample">
+  <img src="img/sudoku_icon.png" alt="Sudoku icon" height="200" weight="300">
 </p>
 
 
@@ -76,7 +76,7 @@ In progress
 >The solver implementations are being developed incrementally, with correctness validated against the reference solutions provided by the original dataset.
 
 <p align="center">
-  <img src="img/sudoku_sample.webp" alt="Sudoku sample">
+  <img src="img/sudoku_sample.webp" alt="Sudoku sample" height="200" weight="300">
 </p>
 
 #### Solver Architecture
